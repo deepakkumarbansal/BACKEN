@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
-// Debugging: Print the resolved path to the .env file
 const envPath = path.join(fileURLToPath(import.meta.url), '../', '.env');
 
 dotenv.config({

@@ -2,17 +2,17 @@ import path from 'path';
 import multer from 'multer';
 
 const upload = multer({
-    dest:"uploads/",
+    dest:"uploads/", // file destination
     limits:{fileSize:50*1024*1024}, //50 mb size is max Limit
     storage:multer.diskStorage({
         destination:"uploads/",
         filename:(_req,file,cb)=>{
-            cd(null, file.originalname);
+            cb(null, file.originalname); // file ka jo original name tha vhi rhega
         },
     }),
-    fileFilter:(_req,file, cb)=>{
+    fileFilter:(req,file, cb)=>{
         const ext = path.extname(file.originalname);
-        if(
+        if( // inn files ke alava koi aur file format aega tho error milega
             ext !== '.jpg' &&
             ext !== '.jpeg' &&
             ext !== '.webp' &&
